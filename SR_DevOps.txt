@@ -1,1 +1,2 @@
 Added fix to the code
+Fixed the bug
