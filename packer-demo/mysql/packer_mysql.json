@@ -1,0 +1,24 @@
+{
+"builders": [{
+    "ami_name": "packer_mysql-v5.8_ami",
+    "ami_description": " mysql DBA Team AMI",
+    "instance_type": "t2.micro",
+    "region": "ap-south-1",
+    "type": "amazon-ebs",
+    "source_ami": "ami-074dc0a6f6c764218",
+    "ssh_username": "ec2-user",
+    "name": "custom demo ami"
+ }],
+   "provisioners": [{
+    "type": "file",
+    "source": "scripts/mysql_install.sh",
+    "destination": "/tmp/mysql_install.sh"
+  },
+  {
+    "type": "shell",
+    "inline": [
+      "sudo bash /tmp/mysql_install.sh"
+    ]
+   }
+   ]
+}

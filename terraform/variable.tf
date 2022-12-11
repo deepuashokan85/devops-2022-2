@@ -1,4 +1,16 @@
-variable ami_id {
+variable web_ami_id {
+  type = string
+  default = "ami_default"
+}
+variable java_ami_id {
+  type = string
+  default = "ami_default"
+}
+variable oracle_ami_id {
+  type = string
+  default = "ami_default"
+}
+variable mysql_ami_id {
   type = string
   default = "ami_default"
 }
