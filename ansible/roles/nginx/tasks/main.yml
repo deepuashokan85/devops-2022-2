@@ -1,0 +1,12 @@
+---
+# tasks file for nginx
+
+
+- name: Installing nginx repo
+  ansible.builtin.command: amazon-linux-extras install nginx1 -y 
+
+- name: Start service nginx, if not started
+  ansible.builtin.service:
+    name: nginx
+    state: started
+
