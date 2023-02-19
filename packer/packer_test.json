@@ -5,7 +5,7 @@
     "instance_type": "t2.micro",
     "region": "us-east-2",
     "type": "amazon-ebs",
-    "source_ami": "ami-0beaa649c482330f7",
+    "source_ami": "ami-0cc87e5027adcdca8",
     "ssh_username": "ec2-user",
     "name": "custom demo ami"
  }],
