@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('Build AMI') {
             steps {
+                sh '''
                 cd packer
                 /usr/local/bin/packer build packer_test.json
+                '''
             }
         }
         stage('Terraform') {
