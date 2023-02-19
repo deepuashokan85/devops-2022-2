@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'test_worker' }
+    agent { label 'fe_dev' }
 
     stages {
         stage('packer') {
