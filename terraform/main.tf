@@ -8,7 +8,7 @@ resource "aws_instance" "web_demo" {
           }
 }
 
-resource "aws_instance" "oracle_demo" {
+resource "aws_instance" "oracle_demoi1" {
           ami           = var.oracle_ami_id
           instance_type = var.inst_type
           subnet_id     = var.sub_id
