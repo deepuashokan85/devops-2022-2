@@ -10,9 +10,9 @@ pipeline {
                 '''
             }
         }
-        stage('Terraform') {
+        stage('Terraform Automation') {
             steps {
-                echo 'DevOps_Testing terraform'
+                echo 'DevOps_Testing terraform Automation'
             }
         }
         stage('Ansible') {
