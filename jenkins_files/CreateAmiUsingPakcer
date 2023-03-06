@@ -1,0 +1,34 @@
+pipeline {
+
+    agent any
+
+    parameters
+    {
+        string(name: 'AWS_ACCESS_KEY', defaultValue: '', description: 'Add AWS Access key')
+        string(name: 'AWS_SECRET_KEY', defaultValue: '', description: 'Add AWS Secret key')
+    }
+
+
+    stages{
+        stage ('Build AMI image using packer'){
+            
+            steps{
+
+                
+
+
+            }
+            
+
+
+
+        }
+
+
+
+
+    }
+
+
+
+}
