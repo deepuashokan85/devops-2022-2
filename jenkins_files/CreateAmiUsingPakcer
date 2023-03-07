@@ -2,18 +2,39 @@ pipeline {
 
     agent any
 
-    parameters
-    {
-        string(name: 'AWS_ACCESS_KEY', defaultValue: '', description: 'Add AWS Access key')
-        string(name: 'AWS_SECRET_KEY', defaultValue: '', description: 'Add AWS Secret key')
-    }
-
-
     stages{
-        stage ('Build AMI image using packer'){
+	    stage ('Setup Parameters') {
+	        steps{
+                properties([
+                    choice(
+                        choices: ['web', 'java', 'mysql'],
+                        name: "APP_IMAGE_TYPE"
+
+                    ),
+                    string(
+                            name: 'AWS_ACCESS_KEY', 
+                            defaultValue: '', 
+                            description: 'Add AWS Access key'
+                    ),
+                    string(
+                            name: 'AWS_SECRET_KEY', 
+                            defaultValue: '', 
+                            description: 'Add AWS Secret key'
+                    ),
+                ])
+
+	        }
+        }
+
+        stage ('Build AMI image using packer based on web type'){
             
             steps{
-
+                    def packer_file_name = "packer_${APP_IMAGE_TYPE}.json"
+                    sh '''
+                    cd packer-demo/${APP_IMAGE_TYPE}
+                    /usr/local/bin/packer build ${packer_file_name}
+                    
+                    '''
                 
 
 
@@ -28,7 +49,4 @@ pipeline {
 
 
     }
-
-
-
 }
