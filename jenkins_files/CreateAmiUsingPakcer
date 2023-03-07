@@ -7,23 +7,24 @@ pipeline {
 	        steps{
                 script {
                             properties([
-                            choice(
-                                choices: ['web', 'java', 'mysql'],
-                                name: "APP_IMAGE_TYPE"
+                                choice(
+                                    choices: ['web', 'java', 'mysql'].join("\n"),
+                                    name: "APP_IMAGE_TYPE"
+                                    description: 'App Type'
 
-                            ),
-                            string(
-                                    name: 'AWS_ACCESS_KEY', 
-                                    defaultValue: '', 
-                                    description: 'Add AWS Access key'
-                            ),
-                            string(
-                                    name: 'AWS_SECRET_KEY', 
-                                    defaultValue: '', 
-                                    description: 'Add AWS Secret key'
-                            ),
-                        ])
-                }
+                                ),
+                                string(
+                                        name: 'AWS_ACCESS_KEY', 
+                                        defaultValue: '', 
+                                        description: 'Add AWS Access key'
+                                ),
+                                string(
+                                        name: 'AWS_SECRET_KEY', 
+                                        defaultValue: '', 
+                                        description: 'Add AWS Secret key'
+                                ),
+                            ])
+                        }
 
 	        }
         }
