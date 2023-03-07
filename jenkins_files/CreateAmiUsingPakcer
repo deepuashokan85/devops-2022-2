@@ -9,7 +9,7 @@ pipeline {
                             properties([
                                 choice(
                                     choices: ['web', 'java', 'mysql'].join("\n"),
-                                    name: "APP_IMAGE_TYPE"
+                                    name: "APP_IMAGE_TYPE",
                                     description: 'App Type'
 
                                 ),
