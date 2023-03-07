@@ -29,7 +29,6 @@ pipeline {
                 }
 	        }
         }
-
         stage ('Build AMI image using packer based on web type'){
             environment {
                 packer_file_name = "packer_${APP_IMAGE_TYPE}.json"
