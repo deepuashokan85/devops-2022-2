@@ -1,0 +1,45 @@
+pipeline {
+
+    agent any
+
+    stages{
+	    stage ('Setup Parameters') {
+	        steps{
+                script {
+                    properties([
+                        parameters([
+                            choice(
+                                choices: ['web', 'java', 'mysql'].join("\n"),
+                                name: "APP_IMAGE_TYPE",
+                                description: 'Select App Type'
+
+                            ),
+                            string(
+                                    name: 'AWS_ACCESS_KEY', 
+                                    defaultValue: '', 
+                                    description: 'Add AWS Access key'
+                            ),
+                            string(
+                                    name: 'AWS_SECRET_KEY', 
+                                    defaultValue: '', 
+                                    description: 'Add AWS Secret key'
+                            ),
+                        ])
+                    ])
+                }
+	        }
+        }
+        stage ('Build AMI image using packer based on web type'){
+            environment {
+                packer_file_name = "packer_${APP_IMAGE_TYPE}.json"
+            }
+            steps{
+                    println("Packer file ${packer_file_name}")
+                    sh """
+                    cd ${WORKSPACE}/packer-demo/${APP_IMAGE_TYPE}
+                    cat ${packer_file_name}
+                    """
+            }
+        }
+    }
+}
