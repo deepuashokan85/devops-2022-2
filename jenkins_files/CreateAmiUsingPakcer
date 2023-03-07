@@ -38,7 +38,7 @@ pipeline {
                     println("Packer file ${packer_file_name}")
                     sh """
                     cd ${WORKSPACE}/packer-demo/${APP_IMAGE_TYPE}
-                    packer build ${packer_file_name}
+                    cat ${packer_file_name}
                     """
             }
         }
