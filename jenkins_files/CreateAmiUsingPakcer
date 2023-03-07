@@ -37,11 +37,10 @@ pipeline {
                         def packer_file_name = "packer_${APP_IMAGE_TYPE}.json"
                         println("Packer file ${packer_file_name}")
 
-                        sh '''
+                        sh label: 'Creating ami from packer' script:"""
                         cd packer-demo/${APP_IMAGE_TYPE}
-                        packer build packer_web.json
-                        
-                        '''
+                        packer build ${packer_file_name}
+                        """
                     }
             }
             
